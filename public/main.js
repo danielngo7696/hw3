@@ -149,15 +149,27 @@ function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
+function yesnoCheck() {
+  if (document.getElementById('yesCheck').checked) {
+      document.getElementById('ifYes').style.display = 'block';
   }
+  else document.getElementById('ifYes').style.display = 'none';
+
+}
+
+const form = document.forms.search_flight;
+function handleSubmit(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  const asString = new URLSearchParams(formData).toString();
+  console.log(asString);
+}
+
+form.addEventListener('submit', handleSubmit);
+// fake-submit the form to see data in the console! =)
+document.getElementById('button').addEventListener("click", search_flight);
+
+function search_flight(){
+  alert("I got clicked!")
 }
